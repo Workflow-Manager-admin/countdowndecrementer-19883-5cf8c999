@@ -1,13 +1,17 @@
 import React, { useState } from "react";
 
-// Define the project's color palette
+/**
+ * Colors used throughout the CountdownDecrementer UI.
+ */
 const COLORS = {
   primary: "#222831",
   secondary: "#235ab3",
   accent: "#00adb5",
 };
 
-// Styles for the overall container
+/**
+ * Styles for the main container centering all elements.
+ */
 const containerStyle: React.CSSProperties = {
   minHeight: "100vh",
   minWidth: "100vw",
@@ -18,7 +22,9 @@ const containerStyle: React.CSSProperties = {
   alignItems: "center",
 };
 
-// Styles for the counter display
+/**
+ * Styles for the prominent counter display.
+ */
 const counterDisplayStyle: React.CSSProperties = {
   fontSize: "10rem",
   fontWeight: 700,
@@ -33,9 +39,15 @@ const counterDisplayStyle: React.CSSProperties = {
   userSelect: "none",
   letterSpacing: "0.2rem",
   transition: "background 0.25s",
+  display: "flex",
+  alignItems: "center",
+  justifyContent: "center",
+  // Ensures large digits remain centered and prominent.
 };
 
-// Styles for the decrement button
+/**
+ * Styles for the decrement button.
+ */
 const buttonStyle: React.CSSProperties = {
   fontSize: "2.9rem",
   fontWeight: 600,
@@ -55,7 +67,7 @@ const buttonStyle: React.CSSProperties = {
  * PUBLIC_INTERFACE
  * CountdownDecrementer component.
  * A minimal, focused decrementing counter for Remotion.
- * Counter starts at 10 and decrements to 0, showing a prominent button.
+ * Counter starts at 10 and decrements to 0, showing a prominent button and value.
  */
 export const CountdownDecrementer: React.FC = () => {
   // Counter state, initialize at 10
@@ -66,11 +78,12 @@ export const CountdownDecrementer: React.FC = () => {
     setCount((prev) => (prev > 0 ? prev - 1 : 0));
   };
 
+  // Render counter value and decrement button, value is always visible and centered.
   return (
     <div style={containerStyle}>
-      <span style={counterDisplayStyle} data-testid="counter-value">
+      <div style={counterDisplayStyle} data-testid="counter-value">
         {count}
-      </span>
+      </div>
       <button
         style={{
           ...buttonStyle,
@@ -86,3 +99,4 @@ export const CountdownDecrementer: React.FC = () => {
     </div>
   );
 };
+
