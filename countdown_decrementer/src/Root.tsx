@@ -8,6 +8,16 @@ import { CountdownDecrementer } from "./CountdownDecrementer";
 export const RemotionRoot: React.FC = () => {
   return (
     <>
+      {/* Composition for the CountdownDecrementer (moved to top to make it default) */}
+      <Composition
+        id="CountdownDecrementer"
+        component={CountdownDecrementer}
+        durationInFrames={150}
+        fps={30}
+        width={1280}
+        height={720}
+      />
+
       <Composition
         // You can take the "id" to render a video:
         // npx remotion render src/index.ts <id> out/video.mp4
@@ -26,16 +36,6 @@ export const RemotionRoot: React.FC = () => {
           logoColor1: "#91EAE4",
           logoColor2: "#86A8E7",
         }}
-      />
-
-      {/* Composition for the CountdownDecrementer */}
-      <Composition
-        id="CountdownDecrementer"
-        component={CountdownDecrementer}
-        durationInFrames={150}
-        fps={30}
-        width={1280}
-        height={720}
       />
 
       {/* Mount any React component to make it show up in the sidebar and work on it individually! */}
